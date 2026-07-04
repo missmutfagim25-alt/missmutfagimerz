@@ -28,7 +28,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;800&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;800&family=Karla:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
 <!-- Yerel İşletme Şeması -->
 <script type="application/ld+json">
@@ -105,6 +105,14 @@
   .ring-divider { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; }
   .ring-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
   .ring { width: 12px; height: 12px; border-radius: 50%; border: 2px dashed var(--gold); display: inline-block; }
+
+  /* Şef imzası motifi - Michelin hissi için */
+  .signature-line { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+  .signature-line .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 3px; }
+  .signature-line .role {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500;
+    color: var(--text-dim); font-size: 0.95rem;
+  }
 
   /* Scroll Reveal & Performance */
   .reveal { 
@@ -328,6 +336,54 @@
 
   .item-meta { display: flex; gap: 16px; font-size: 0.8rem; color: var(--copper); font-weight: 700; flex-wrap: wrap; }
 
+  /* ============ Katlanır Ana Bölüm (Master Toggle) ============
+     "Erzurum ve Tarih" ile "Yemek Tarifleri" bölümleri sayfayı
+     uzatmaması için varsayılan olarak kapalı gelir; büyük, şık bir
+     davetiye kartına tıklanınca aşağıya doğru açılır. */
+  .master-toggle {
+    width: 100%;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    background: linear-gradient(135deg, var(--card-black) 0%, var(--card-black-2) 100%);
+    border: 1px solid var(--gold);
+    padding: 28px 32px;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow .3s var(--ease), transform .3s var(--ease);
+  }
+  .master-toggle::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 8% 50%, rgba(212,175,55,0.10), transparent 55%);
+    pointer-events: none;
+  }
+  .master-toggle:hover { box-shadow: 0 10px 34px rgba(212,175,55,0.14); transform: translateY(-2px); }
+  .mt-left { display: flex; align-items: center; gap: 20px; position: relative; z-index: 1; }
+  .mt-num {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600;
+    font-size: 2.2rem; color: var(--gold); border: 1px solid var(--line);
+    width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; background: rgba(212,175,55,0.05);
+  }
+  .mt-title { font-family: 'Bitter', serif; font-weight: 800; font-size: 1.25rem; color: #fff; margin-bottom: 4px; }
+  .mt-sub { font-size: 0.85rem; color: var(--text-dim); }
+  .mt-chevron {
+    flex-shrink: 0; width: 40px; height: 40px; border: 1px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; color: var(--gold);
+    transition: transform .35s var(--ease), background-color .25s, color .25s;
+    position: relative; z-index: 1;
+  }
+  .master-toggle[aria-expanded="true"] .mt-chevron { transform: rotate(180deg); background: var(--gold); color: var(--bg-black); }
+
+  .master-panel {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows .5s var(--ease);
+  }
+  .master-panel.open { grid-template-rows: 1fr; }
+  .master-panel-inner { overflow: hidden; }
+  .master-panel-content { padding-top: 40px; }
+
   /* Yemek Tarifleri Engine CSS */
   .recipe-search { position: relative; max-width: 520px; margin-bottom: 32px; }
   .recipe-search input {
@@ -393,7 +449,7 @@
   /* Yorumlar */
   .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
   .testi-card { background: var(--card-black); border: 1px solid var(--line); padding: 28px; position: relative; }
-  .testi-card::before { content: "“"; position: absolute; top: 8px; left: 16px; font-family: 'Bitter', serif; font-size: 2.5rem; color: var(--gold); opacity: .35; }
+  .testi-card::before { content: "\201C"; position: absolute; top: 8px; left: 16px; font-family: 'Bitter', serif; font-size: 2.5rem; color: var(--gold); opacity: .35; }
   .testi-card p { color: var(--text-dim); font-size: 0.95rem; margin: 14px 0 16px; position: relative; z-index: 1; }
   .testi-name { font-family: 'Bitter', serif; color: var(--gold); font-weight: 700; font-size: 0.9rem; }
   .testi-stars { color: var(--copper); letter-spacing: 2px; font-size: 0.85rem; }
@@ -554,18 +610,35 @@
         <div class="ring-divider"><span class="ring"></span></div>
         <span class="eyebrow">Mutfağınız İçin Genel Kültür</span>
         <h2>Erzurum'un En Meşhur 25 Yemeği</h2>
-        <p style="font-size:0.85rem; color:var(--text-dim); margin-top:8px;">Cağ kebabından kadayıf dolmasına, hıngelden aşotu çorbasına — Erzurum mutfağının en köklü 25 tarifi burada. Aklınızdaki yemeğin adını yazın, tarifi anında görün.</p>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-top:8px;">Cağ kebabından kadayıf dolmasına, hıngelden aşotu çorbasına — meraklısına özel, dilediğiniz an açabileceğiniz küçük bir tarif arşivi.</p>
       </div>
 
-      <div class="recipe-search reveal">
-        <input type="text" id="recipeSearch" placeholder="Örn: cağ kebabı, hıngel, kadayıf dolması..." autocomplete="off">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      </div>
-      <div class="recipe-count reveal" id="recipeCount"></div>
-      <div class="recipe-grid reveal" id="recipeGrid"></div>
-      <div class="recipe-empty reveal" id="recipeEmpty" style="display:none;"></div>
+      <button class="master-toggle reveal" id="recipesToggle" aria-expanded="false" aria-controls="recipesPanel">
+        <span class="mt-left">
+          <span class="mt-num" aria-hidden="true">25</span>
+          <span>
+            <span class="mt-title">Tarif Arşivini Aç</span>
+            <span class="mt-sub">Erzurum mutfağının 25 klasik reçetesi — arayın, tıklayın, pişirin.</span>
+          </span>
+        </span>
+        <span class="mt-chevron" aria-hidden="true">▾</span>
+      </button>
 
-      <div class="recipe-detail" id="recipeDetail"></div>
+      <div class="master-panel" id="recipesPanel">
+        <div class="master-panel-inner">
+          <div class="master-panel-content">
+            <div class="recipe-search">
+              <input type="text" id="recipeSearch" placeholder="Örn: cağ kebabı, hıngel, kadayıf dolması..." autocomplete="off">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            </div>
+            <div class="recipe-count" id="recipeCount"></div>
+            <div class="recipe-grid" id="recipeGrid"></div>
+            <div class="recipe-empty" id="recipeEmpty" style="display:none;"></div>
+
+            <div class="recipe-detail" id="recipeDetail"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -575,9 +648,27 @@
         <div class="ring-divider"><span class="ring"></span></div>
         <span class="eyebrow">Kültür Mirası</span>
         <h2>Kadim Şehir Erzurum</h2>
-        <p style="color:var(--text-dim); margin-top:8px;">İpek Yolu'nun kalbinde, tarihin ve lezzetin harmanlandığı zirve şehir. Aşağıdaki sekmelerden Erzurum'da mutlaka görülmesi gereken 10 tarihi yeri inceleyebilirsiniz.</p>
+        <p style="color:var(--text-dim); margin-top:8px;">İpek Yolu'nun kalbinde, tarihin ve lezzetin harmanlandığı zirve şehir. Merak edenler için, şehri tanıyan on duraklık kısa bir gezi.</p>
       </div>
-      <div class="menu-list" id="accHistory"></div>
+
+      <button class="master-toggle reveal" id="historyToggle" aria-expanded="false" aria-controls="historyPanel">
+        <span class="mt-left">
+          <span class="mt-num" aria-hidden="true">10</span>
+          <span>
+            <span class="mt-title">Şehrimizi Tanıyalım</span>
+            <span class="mt-sub">Erzurum'un 10 tarihi durağı — dilediğinizde açın, dilediğinizde kapatın.</span>
+          </span>
+        </span>
+        <span class="mt-chevron" aria-hidden="true">▾</span>
+      </button>
+
+      <div class="master-panel" id="historyPanel">
+        <div class="master-panel-inner">
+          <div class="master-panel-content">
+            <div class="menu-list" id="accHistory"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -681,6 +772,31 @@
     });
   };
 
+  const initMasterToggles = () => {
+    const pairs = [
+      { toggleId: 'recipesToggle', panelId: 'recipesPanel' },
+      { toggleId: 'historyToggle', panelId: 'historyPanel' }
+    ];
+
+    pairs.forEach(({ toggleId, panelId }) => {
+      const toggle = document.getElementById(toggleId);
+      const panel = document.getElementById(panelId);
+      if (!toggle || !panel) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = panel.classList.contains('open');
+        panel.classList.toggle('open', !isOpen);
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+
+        if (!isOpen) {
+          setTimeout(() => {
+            toggle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 80);
+        }
+      });
+    });
+  };
+
   const buildAccordion = (containerId, items, firstOpen) => {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -700,7 +816,6 @@
           <p>${item.gourmetNote.text}</p>
         </div>
       ` : '';
-      // Sadece ürün akordeonunda (meta bilgisi olan kalemlerde) tek tıkla sipariş butonu göster
       const orderHtml = item.meta ? `
         <a href="#" class="btn btn-primary acc-order-btn" data-product="${item.title.replace(/"/g, '&quot;')}" style="margin-top:14px; padding:9px 16px; font-size:0.78rem; display:inline-block;">📦 Bu Ürünü Sipariş Ver</a>
       ` : '';
@@ -937,7 +1052,6 @@ if (gGrid) {
   const initScrollReveal = () => {
     const items = document.querySelectorAll('.reveal');
 
-    // IntersectionObserver desteklenmiyorsa (eski tarayıcılar) içerik gizli kalmasın
     if (!('IntersectionObserver' in window)) {
       items.forEach(el => el.classList.add('in'));
       return;
@@ -959,6 +1073,7 @@ if (gGrid) {
   document.addEventListener('DOMContentLoaded', () => {
     initWhatsApp();
     initMobileMenu();
+    initMasterToggles();
     initModules();
     renderRecipeGrid(recipes);
     initRecipeSearch();
