@@ -826,17 +826,26 @@
       {title:'06. Ev Yapımı Premium Baklava', text:'İncecik, tül hafifliğinde açılmış yufka katlarının arasına bolca serpiştirilen birinci kalite fıstık veya ceviz içiyle buluşan, tam kıvamında şerbetlenmiş çıtır ev baklavalarımız.', meta:['Fıstıklı veya Cevizli Seçeneği','Özel Şerbetli']}
     ], true);
 
-    const galleryItems = ['Hıngel Mantısı', 'Civil Peynirli Su Böreği', 'Erzurum Ketesi', 'Tatar Böreği', 'Premium Baklava', 'El Açması Sarma'];
-    const gGrid = document.getElementById('galleryGrid');
-    if (gGrid) {
-      gGrid.innerHTML = galleryItems.map(name => `
-        <div class="gallery-slot reveal">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-3-3-6 6"/></svg>
-          <b>${name}</b>
-          <span>Görsel Yakında</span>
-        </div>
-      `).join('');
-    }
+const galleryItems = [
+  { name: "Hıngel Mantısı", img: "hingel.png" },
+  { name: "Civil Peynirli Su Böreği", img: "suboregi.png" },
+  { name: "Erzurum Ketesi", img: "kete.png" },
+  { name: "Tatar Böreği", img: "tatarboregi.jpeg" },
+  { name: "Premium Baklava", img: "baklava.png" },
+  { name: "El Açması Sarma", img: "sarma.png" }
+];
+
+const gGrid = document.getElementById("galleryGrid");
+
+if (gGrid) {
+  gGrid.innerHTML = galleryItems.map(item => `
+    <div class="gallery-slot reveal">
+      <img src="${item.img}" alt="${item.name}"
+           style="width:100%;height:220px;object-fit:cover;border-radius:10px;">
+      <b>${item.name}</b>
+    </div>
+  `).join("");
+}
 
     const testimonials = [
       {name:'Selin K.', text:'Hıngel mantısı tam anlamıyla Erzurum lezzeti. Tereyağı ve sarımsaklı yoğurt dengesi mükemmeldi.'},
