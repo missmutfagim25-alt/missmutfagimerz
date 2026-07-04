@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -232,6 +233,41 @@
   .about-text p { margin-bottom: 16px; color: var(--text-dim); }
   .about-box { background: var(--card-black); border: 1px solid var(--line); padding: 32px; border-left: 4px solid var(--gold); }
 
+  .about-photo {
+    position: relative;
+    border: 2px solid var(--gold);
+    padding: 10px;
+    background: var(--card-black);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  }
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+    filter: saturate(0.95) contrast(1.05);
+  }
+  .about-photo .caption {
+    position: absolute; left: 20px; bottom: 20px;
+    background: rgba(13,13,13,0.85);
+    border: 1px solid var(--gold);
+    color: var(--gold-bright);
+    font-family: 'Bitter', serif; font-weight: 600; font-size: 0.78rem;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 8px 14px;
+  }
+
+  @media (min-width: 780px) {
+    .about-grid {
+      grid-template-columns: 1fr 1.25fr;
+      grid-template-areas: "photo text" "photo box";
+      align-items: start;
+    }
+    .about-photo { grid-area: photo; height: 100%; }
+    .about-text { grid-area: text; }
+    .about-box { grid-area: box; }
+  }
+
   /* Akordeon */
   .menu-list { display: flex; flex-direction: column; gap: 12px; }
   .acc-item { background: var(--card-black); border: 1px solid var(--line); border-radius: 2px; transition: background-color .2s, border-color .2s; }
@@ -437,6 +473,10 @@
 
   <section id="hakkimizda">
     <div class="wrap about-grid">
+      <div class="about-photo reveal">
+        <img src="uretim.jpg" alt="Miss Mutfağım mutfağında elde hamur açma ve üretim anları" loading="lazy" width="800" height="800">
+        <span class="caption">Elde, günlük, taze üretim</span>
+      </div>
       <div class="about-text reveal">
         <div class="ring-divider"><span class="ring"></span></div>
         <span class="eyebrow">Hikayemiz & Üretim Felsefemiz</span>
