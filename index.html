@@ -603,10 +603,6 @@
   }
   @keyframes pulse { 0% { transform: scale(1); opacity: .5; } 100% { transform: scale(1.6); opacity: 0; } }
   .whatsapp-float:hover { transform: scale(1.1); }
-  .whatsapp-float <svg viewBox="0 0 24 24" aria-hidden="true" style="width:32px; height:32px; fill:currentColor;">
-  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.1-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.454 5.709 1.455h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-</svg>
-
   footer { padding: 36px 0; font-size: 0.85rem; color: var(--text-dim); border-top: 1px solid var(--line); }
   .footer-flex { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
   .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
@@ -1045,7 +1041,7 @@
   };
 
   const recipes = [
-    {name:'Cağ Kebabı', cat:'Ana Yemek', time:'2 sa (+ marinasyon)', servings:'6 kişilik', ingredients:['1.5 kg kuzu but/kol eti (ince dilimli)','2 adet soğan (rendelenmiş)','1 su bardağı süt','1 tatlı kaşığı karabiber','1 tatlı kaşığı pul biber','Tuz'], steps:['Eti ince dilimleyip soğan suyu, süt and baharatlarla harmanlayın, en az 4 saat (tercihen bir gece) marine edin.','Dilimleri şişe yatay olarak sıkıca dizin.','Şişi yatık şekilde odun ateşinde yavaşça çevirerek pişirin.','Dış yüzeyi piştikçe ince dilimler halinde kesip, kesilen kısmı tekrar ateşe yaklaştırarak pişirmeye devam edin.','Sıcak lavaş ekmeğin üzerine dilimleyerek servis edin.']},
+    {name:'Cağ Kebabı', cat:'Ana Yemek', time:'2 sa (+ marinasyon)', servings:'6 kişilik', ingredients:['1.5 kg kuzu but/kol eti (ince dilimli)','2 adet soğan (rendelenmiş)','1 su bardağı süt','1 tatlı kaşığı karabiber','1 tatlı kaşığı pul biber','Tuz'], steps:['Eti ince dilimleyip soğan suyu, süt ve baharatlarla harmanlayın, en az 4 saat (tercihen bir gece) marine edin.','Dilimleri şişe yatay olarak sıkıca dizin.','Şişi yatık şekilde odun ateşinde yavaşça çevirerek pişirin.','Dış yüzeyi piştikçe ince dilimler halinde kesip, kesilen kısmı tekrar ateşe yaklaştırarak pişirmeye devam edin.','Sıcak lavaş ekmeğin üzerine dilimleyerek servis edin.']},
     {name:'Susuz Hıngel (Erzurum Mantısı)', cat:'Ana Yemek', time:'1 sa 30 dk', servings:'6 kişilik', ingredients:['4 su bardağı un','1 yumurta','1 su bardağı su','1 tatlı kaşığı tuz','300 g kıyma','1 soğan','Sarımsaklı yoğurt, eritilmiş tereyağı'], steps:['Un, yumurta, su ve tuzla sert bir hamur yoğurun, dinlendirin.','Kıymayı rendelenmiş soğan ve baharatla harmanlayıp iç harcı hazırlayın.','Hamuru ince açıp kareler kesin, her karenin ortasına iç harçtan koyup bohça şeklinde kapatın.','Kaseler dolusu kaynayan tuzlu suda haşlayın, süzün.','Geniş bir tepsiye alıp üzerine sarımsaklı yoğurt ve kızdırılmış tereyağı gezdirerek servis edin.']},
     {name:'Sulu Hıngel', cat:'Ana Yemek', time:'1 sa 30 dk', servings:'6 kişilik', ingredients:['Susuz hıngel ile aynı hamur ve iç harç','2 yemek kaşığı salça','1 yemek kaşığı tereyağı','Haşlama suyu'], steps:['Hıngeli susuz tarifteki gibi hazırlayıp haşlayın.','Bu kez haşlama suyunu dökmeyin.','Salça ve tereyağını suyla birlikte karıştırıp hıngelin üzerine ilave edin.','Hepsini birlikte geniş bir tepsiye dökün.','Üzerine sarımsaklı yoğurt ve kızdırılmış tereyağı gezdirerek sıcak servis edin.']},
     {name:'Kadayıf Dolması', cat:'Tatlı', time:'1 sa', servings:'10 kişilik', ingredients:['500 g tel kadayıf','200 g tereyağı (eritilmiş)','2 su bardağı ceviz veya fındık (dövülmüş)','Şerbet: 3 su bardağı şeker, 2.5 su bardağı su, birkaç damla limon'], steps:['Tel kadayıfı elinizle didikleyip eritilmiş tereyağıyla harmanlayın.','Bir tutam kadayıfın içine ceviz koyup sıkıca sararak silindir şeklinde dolma yapın.','Fırın tepsisine dizip 180°C fırında altın rengi alana kadar pişirin.','Bu arada şeker ve suyu kaynatıp limon damlatarak şerbeti hazırlayın.','Fırından çıkan sıcak kadayıfın üzerine ılık şerbeti gezdirip dinlendiren.']},
@@ -1187,7 +1183,7 @@
     ], false);
 
     buildAccordion('accProducts', [
-      {title:'01. Hakiki Erzurum Mantısı (Hıngel)', text:'İmza lezzetimiz. Tamamen dana kıyması og zırh soğanıyla doldurulan, elde çok küçük ve sıkı kesilip bohça formunda kapatılan nefis ev mantısı. Sipariş üzerine günlük dondurulmadan taze ulaştırılır.', meta:['%100 El Emeği','Zanaat İşi','Siparişe Özel']},
+      {title:'01. Hakiki Erzurum Mantısı (Hıngel)', text:'İmza lezzetimiz. Tamamen dana kıyması ve zırh soğanıyla doldurulan, elde çok küçük ve sıkı kesilip bohça formunda kapatılan nefis ev mantısı. Sipariş üzerine günlük dondurulmadan taze ulaştırılır.', meta:['%100 El Emeği','Zanaat İşi','Siparişe Özel']},
       {title:'02. Erzurum Civil Peynirli Su Böreği', text:'Geleneksel su böreği zanaatının en üst noktası. Her yufkası bol köy yumurtasıyla yoğrulan sert hamurdan elde açılır ve dev kazanlarda tek tek haşlanır. Tepsiye serilen katların arasına coğrafi işaretli Erzurum süzme tel peyniri serpiştirilir.', gourmetNote: {title: 'Erzurum Su Böreğinin Ayırt Edici Sırrı', text: 'Erzurum su böreği, sıradan su böreklerinden tamamen ayrışır. İç harcında eriyen, uzayan ve ağır olmayan meşhur Erzurum Civil Peyniri (Tel Peynir) ve taze maydanoz kullanılır. Hakiki köy tereyağı ile yağlanan bol katlı yufkalar, fırınlandığında üstü çıtır çıtır altın sarısı bir doku kazanırken, içi civil peynirinin lifli yapısıyla su gibi yumuşacık ve uzayan bir kıvam alır. Ağır şerbetli veya un kokan böreklerin aksine, buram buram halis tereyağı ve yüksek yumurta oranıyla gerçek bir gastronomi deneyimidir.'}, meta:['Coğrafi Tescilli Civil Peyniri','Halis Tereyağlı','Bol Yumurtalı Özel Hamur']},
       {title:'03. El Açması Yaprak Sarma', text:'İncecik sarılmış, zeytinyağlı, dengeli ekşisi ve tam kıvamında iç harcıyla hazırlanan geleneksel ev sarması.', meta:['Günlük Hazırlanır','Katkısız']},
       {title:'04. Meşhur Erzurum Ketesi', text:'Bol hakiki tereyağı ile kat kat açılan, içi nefis un helvalı (içli) veya isteğe göre sade olarak hazırlanan Erzurum klasiği.', meta:['Tereyağlı','Geleneksel Reçete']},
@@ -1266,65 +1262,6 @@ if (gGrid) {
   });
 
 })();
-</script>
-  <script>
-  // 1. Header Scroll Efekti
-  window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-
-  // 2. Mobil Menü Toggle
-  const menuBtn = document.querySelector('.menu-btn');
-  const mobilePanel = document.querySelector('.mobile-panel');
-  if(menuBtn && mobilePanel) {
-    menuBtn.addEventListener('click', () => {
-      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', !expanded);
-      mobilePanel.classList.toggle('open');
-    });
-  }
-
-  // 3. Akordeon Menü (Ürünler / Tarifler için)
-  const accTriggers = document.querySelectorAll('.acc-trigger');
-  accTriggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const item = trigger.closest('.acc-item');
-      item.classList.toggle('open');
-    });
-  });
-
-  // 4. Master Panel Katlanma Efekti (Erzurum ve Tarih / Tarifler Bloğu)
-  const masterToggles = document.querySelectorAll('.master-toggle');
-  masterToggles.forEach(toggle => {
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', !expanded);
-      const panel = toggle.nextElementSibling;
-      if(panel && panel.classList.contains('master-panel')) {
-        panel.classList.toggle('open');
-      }
-    });
-  });
-
-  // 5. Scroll Reveal (Aşağı Kaydırdıkça Elementlerin Belirmesi)
-  const reveals = document.querySelectorAll('.reveal');
-  const revealOnScroll = () => {
-    reveals.forEach(reveal => {
-      const windowHeight = window.innerHeight;
-      const revealTop = reveal.getBoundingClientRect().top;
-      const revealPoint = 150;
-      if (revealTop < windowHeight - revealPoint) {
-        reveal.classList.add('in');
-      }
-    });
-  };
-  window.addEventListener('scroll', revealOnScroll);
-  window.addEventListener('DOMContentLoaded', revealOnScroll);
 </script>
 </body>
 </html>
