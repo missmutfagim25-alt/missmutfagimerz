@@ -18,16 +18,16 @@
 <meta property="og:description" content="Elde açılan hamur, zanaatın asaletiyle buluştu. Erzurum'un köklü mutfak mirası, sipariş üzerine taze hazırlanır.">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:url" content="https://missmutfagim.com/">
-<meta property="og:image" content="https://missmutfagim.com/04072026.png">
+<meta property="og:image" content="https://missmutfagim.com/hero-manti.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Miss Mutfağım el yapımı Erzurum lezzetleri">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Erzurum Mantısı & Su Böreği Siparişi | Miss Mutfağım">
 <meta name="twitter:description" content="Elde açılan hamurla hazırlanan Erzurum lezzetleri, siparişe özel taze hazırlanır.">
-<meta name="twitter:image" content="https://missmutfagim.com/04072026.png">
+<meta name="twitter:image" content="https://missmutfagim.com/hero-manti.png">
 
-<link rel="preload" as="image" href="04072026.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="hero-manti.webp" type="image/webp" fetchpriority="high">
 
 
 <!-- Favicon -->
@@ -47,7 +47,7 @@
   "@type": ["Restaurant", "LocalBusiness"],
   "name": "Miss Mutfağım",
   "url": "https://missmutfagim.com/",
-  "image": "https://missmutfagim.com/04072026.png",
+  "image": "https://missmutfagim.com/hero-manti.png",
   "description": "Erzurum Palandöken'de elde açılan hamurla hazırlanan hıngel mantısı, civil peynirli su böreği, kete ve ev yapımı Erzurum lezzetleri.",
   "servesCuisine": "Türk, Erzurum Mutfağı",
   "priceRange": "₺₺",
@@ -145,10 +145,16 @@
   /* Header */
   header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(13, 13, 13, 0.95);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background-color .4s var(--ease), backdrop-filter .4s var(--ease), border-color .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  header.scrolled {
+    background: rgba(13, 13, 13, 0.82);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
     border-bottom: 1px solid var(--line);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.28);
   }
   nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 16px; }
   
@@ -215,6 +221,7 @@
     max-height: 1100px;
     display: flex;
     align-items: center;
+    background-color: var(--bg-black);
   }
   @supports (height: 100svh) { .hero { height: 100svh; } }
 
@@ -226,39 +233,64 @@
   .hero-media img {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover; object-position: center 30%;
-    transform: translate3d(0,0,0) scale(1);
+    object-fit: cover; object-position: center 32%;
+    transform: translate3d(0,0,0) scale(1.06);
     transform-origin: 55% 40%;
-    animation: heroKenBurns 22s ease-in-out infinite alternate;
+    animation: heroKenBurns 24s ease-in-out infinite alternate;
     will-change: transform;
     backface-visibility: hidden;
+    opacity: 0;
+    animation: heroImgFadeIn 1.4s var(--ease) forwards, heroKenBurns 24s ease-in-out .4s infinite alternate;
   }
+  @keyframes heroImgFadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes heroKenBurns {
-    from { transform: translate3d(0,0,0) scale(1); }
-    to   { transform: translate3d(-1.5%,-1.5%,0) scale(1.15); }
+    from { transform: translate3d(0,0,0) scale(1.06); }
+    to   { transform: translate3d(-1.2%,-1.2%,0) scale(1.14); }
+  }
+  @media (max-width: 640px) {
+    .hero-media img { object-position: 62% 22%; }
   }
 
   .hero-overlay {
     position: absolute; inset: 0; z-index: -1;
     background:
       radial-gradient(circle at 88% 8%, rgba(212,175,55,0.16) 0, transparent 45%),
-      linear-gradient(100deg, rgba(13,13,13,0.62) 0%, rgba(13,13,13,0.45) 45%, rgba(13,13,13,0.45) 100%),
-      linear-gradient(180deg, rgba(13,13,13,0.08) 45%, rgba(13,13,13,0.55) 100%);
+      linear-gradient(105deg, rgba(9,8,6,0.78) 0%, rgba(13,11,8,0.52) 42%, rgba(13,11,8,0.40) 70%, rgba(13,11,8,0.55) 100%),
+      linear-gradient(180deg, rgba(10,9,7,0.05) 0%, rgba(10,9,7,0.12) 40%, rgba(8,7,5,0.72) 100%);
   }
   @media (max-width: 640px) {
-    .hero { min-height: 560px; }
+    .hero { min-height: 620px; }
     .hero-overlay {
       background:
-        radial-gradient(circle at 88% 8%, rgba(212,175,55,0.14) 0, transparent 45%),
-        linear-gradient(180deg, rgba(13,13,13,0.5) 0%, rgba(13,13,13,0.62) 100%);
+        radial-gradient(circle at 88% 6%, rgba(212,175,55,0.14) 0, transparent 45%),
+        linear-gradient(180deg, rgba(9,8,6,0.55) 0%, rgba(9,8,6,0.42) 30%, rgba(8,7,5,0.78) 100%);
     }
+  }
+
+  /* Güven Rozetleri */
+  .trust-badges {
+    display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 30px;
+    opacity: 0; transform: translateY(20px);
+    animation: heroFadeUp .9s var(--ease) forwards; animation-delay: .8s;
+  }
+  .trust-badges span {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em;
+    color: var(--text-light); text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+  }
+  .trust-badges span::before {
+    content: "✓"; display: inline-flex; align-items: center; justify-content: center;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: rgba(212,175,55,0.9); color: var(--bg-black);
+    font-size: 0.62rem; font-weight: 800; flex-shrink: 0;
   }
 
   /* Kaydırma İpucu */
   .scroll-cue {
     position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%);
     z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
-    color: var(--gold-bright); opacity: .85; transition: opacity .25s ease;
+    color: var(--gold-bright); opacity: 0; transition: opacity .25s ease;
+    animation: heroFadeUp .9s var(--ease) forwards; animation-delay: 1.05s;
   }
   .scroll-cue:hover { opacity: 1; }
   .scroll-cue-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; }
@@ -589,7 +621,7 @@
   </svg>
 </a>
 
-<header>
+<header id="siteHeader">
   <div class="wrap">
     <nav>
       <a href="#anasayfa" class="brand">Miss Mutfağım</a>
@@ -625,19 +657,26 @@
   <section class="hero" id="hero">
     <div class="hero-media" aria-hidden="true">
       <picture>
-        <source srcset="04072026.webp" type="image/webp">
-        <img src="04072026.jpg" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+        <source srcset="hero-manti.webp" type="image/webp">
+        <img src="hero-manti.png" alt="Miss Mutfağım'da elde açılan hamurla hazırlanan, anne eli değmiş taze Erzurum mantısı (hıngel) yakın çekim" width="1672" height="941" fetchpriority="high" decoding="async">
       </picture>
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="wrap hero-flex">
       <div class="hero-text">
         <span class="eyebrow hero-anim" style="animation-delay:.1s">★ Geleneksel Erzurum Lezzetleri</span>
-        <h1 class="hero-anim" style="animation-delay:.28s">Elde açılan hamur, <em>zanaatın</em> asaletiyle buluştu.</h1>
+        <h1 class="hero-anim" style="animation-delay:.28s">Anne eli değen <em>gerçek</em> Erzurum lezzetleri.</h1>
         <p class="hero-anim" style="animation-delay:.46s">Miss Mutfağım'da her mantı tek tek kapatılır, her yufka özenle elde açılır. Erzurum'un köklü lezzet kültürünü en seçkin haliyle sofranıza getiriyoruz.</p>
         <div class="btn-group hero-anim" style="animation-delay:.64s">
-          <a href="#urunlerimiz" class="btn btn-glass-primary">Ürünlerimizi İncele</a>
-          <a href="#iletisim" class="btn btn-glass-ghost">Sipariş Kanalları</a>
+          <a href="#iletisim" class="btn btn-glass-primary">Sipariş Ver</a>
+          <a href="#urunlerimiz" class="btn btn-glass-ghost">Ürünleri İncele</a>
+        </div>
+        <div class="trust-badges" aria-hidden="false">
+          <span>Günlük Üretim</span>
+          <span>El Yapımı</span>
+          <span>Katkısız</span>
+          <span>Taze Hazırlanır</span>
+          <span>Erzurum Yöresel Lezzetleri</span>
         </div>
       </div>
       <div class="seal" aria-hidden="true">
@@ -869,6 +908,24 @@
       ticking = false;
     };
 
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+  };
+
+  const initHeaderScrollState = () => {
+    const header = document.getElementById('siteHeader');
+    if (!header) return;
+
+    let ticking = false;
+    const update = () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+      ticking = false;
+    };
+    update();
     window.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(update);
@@ -1200,6 +1257,7 @@ if (gGrid) {
   document.addEventListener('DOMContentLoaded', () => {
     initWhatsApp();
     initHeroParallax();
+    initHeaderScrollState();
     initMobileMenu();
     initMasterToggles();
     initModules();
